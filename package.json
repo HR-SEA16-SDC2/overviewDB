@@ -4,7 +4,9 @@
   "description": "database and API service for catwalk overviews component",
   "main": "index.js",
   "scripts": {
-    "test": "npm run jest"
+    "test": "",
+    "start": "nodemon ./index.js",
+    "start-production": "node ./index.js"
   },
   "repository": {
     "type": "git",
