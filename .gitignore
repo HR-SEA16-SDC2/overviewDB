@@ -1,3 +1,9 @@
+#Sensitive Info
+dbConfig.js
+
+#Database Data
+SDCdata/
+
 # Logs
 logs
 *.log

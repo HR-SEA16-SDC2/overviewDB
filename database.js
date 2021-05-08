@@ -1,25 +1,25 @@
-const postgres = require('postgres');
-const sql = postgres('postgres://username:password@host:port/database', {
-  host        : '',         // Postgres ip address or domain name
-  port        : 5432,       // Postgres server port
-  path        : '',         // unix socket path (usually '/tmp')
-  database    : '',         // Name of database to connect to
-  username    : '',         // Username of database user
-  password    : '',         // Password of database user
-  ssl         : false,      // True, or options for tls.connect
-  max         : 10,         // Max number of connections
-  timeout     : 0,          // Idle connection timeout in seconds
-  types       : [],         // Array of custom types, see more below
-  onnotice    : fn          // Defaults to console.log
-  onparameter : fn          // (key, value) when server param change
-  debug       : fn          // Is called with (connection, query, parameters)
-  transform   : {
-    column            : fn, // Transforms incoming column names
-    value             : fn, // Transforms incoming row values
-    row               : fn  // Transforms entire rows
-  },
-  connection  : {
-    application_name  : 'postgres.js', // Default application_name
-    ...                                // Other connection parameters
+const { Pool, Client } = require('pg');
+const { config } = require('./dbConfig.js');
+
+const pool = new Pool(config);
+pool.connect((err, success) => {
+  if (err) {
+    console.log('error connecting to database', err);
+  } else {
+  console.log('successfully connected to the database!');
   }
+});
+
+const testQueryStr = {
+  text: 'Select * from skus where style_id = $1',
+  values: [1],
+};
+
+pool
+.query(testQueryStr)
+.then((res) => {
+  console.log(res);
+})
+.catch((err) => {
+  console.log(err);
 })
