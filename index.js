@@ -1,16 +1,14 @@
 const express = require('express');
-// const morgan = require('morgan');
-//const db = require('pathToDbFiles');
-// const routes = require('./routes.js');
-const app = express();
 const {
   getSingleProduct,
 } = require('./Queries/index.js');
-// app.use(morgan('dev'));
-// app.use(routes);
+const app = express();
 
+
+//----- Routes -----//
 
 app.get('/product/:product_id', getSingleProduct);
+// app.get('/product/:product_id/styles', getProductStyles);
 
 
 
