@@ -10,16 +10,17 @@ pool.connect((err, success) => {
   }
 });
 
-const testQueryStr = {
-  text: 'Select * from skus where style_id = $1',
-  values: [1],
-};
+//Query Helper Funcs:
+const calculateQueryRange = (page, count) => {
 
-pool
-.query(testQueryStr)
-.then((res) => {
-  console.log(res);
-})
-.catch((err) => {
-  console.log(err);
-})
+  const queryRange = {
+    start: (count * page) - count + 1,
+    end: count * page,
+  };
+  return queryRange;
+}
+
+
+module.exports = {
+  pool, calculateQueryRange,
+}

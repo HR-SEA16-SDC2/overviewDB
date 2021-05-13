@@ -1,7 +1,8 @@
 const router = require('express').Router();
+const db = require('./database.js');
 
-router.get('/', (req, res) => {
-  res.status(200).send('♪┏(・o･)┛♪┗ ( ･o･) ┓♪♪   ♪⁽⁽٩( ᐖ )۶⁾⁾♪♪₍₍٩( ᐛ )۶₎₎♪   ♪└[∵┌]♪└[ ∵ ]┘[┐∵]┘♪♪')
-});
+
+
+router.get('/test', db.singleProduct);
 
 module.exports = router;
