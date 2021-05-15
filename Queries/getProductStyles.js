@@ -41,8 +41,8 @@ const getProductStyles = (req, res) => {
       )
 
     SELECT * FROM style_table
-    INNER JOIN photo_table ON style_table.style_id = photo_table.style_id
-    INNER JOIN skus_table ON skus_table.style_id = style_table.style_id
+    LEFT JOIN photo_table ON style_table.style_id = photo_table.style_id
+    LEFT JOIN skus_table ON skus_table.style_id = style_table.style_id
      ;`,
     values: [productId],
   };
