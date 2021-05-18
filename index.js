@@ -15,7 +15,7 @@ app.get('/products', getProducts);
 app.get('/products/:product_id/styles', getProductStyles);
 app.get('/products/:product_id/related', getRelatedProducts);
 app.get('/loaderio-21293d4c32d9b6c93aac648b1e27fa59.txt', (req, res) => {
-  res.sendfile('/home/j-rog/hackReactor/overviewDB/loaderio-aa485fa3f951111ae2aa4d64f4887484.txt')
+  res.sendfile('./loaderio-21293d4c32d9b6c93aac648b1e27fa59.txt')
 })
 
 
